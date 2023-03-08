@@ -5,6 +5,8 @@ using namespace std;
 
 Trojkat::Trojkat(double a, double b, double c): a(a), b(b), c(c) {
 	cout << "Konstruktor Trojkata(" << a << "," << b << ',' << c << ")" << endl;
+	sumaObwodow += Obwod();
+	cout << "sumaObwodow: " << sumaObwodow << endl;
 }
 
 double Trojkat::GetA() const {
@@ -12,7 +14,9 @@ double Trojkat::GetA() const {
 }
 
 void Trojkat::SetA(double a) {
+	sumaObwodow -= Obwod();
 	this->a = a;
+	sumaObwodow += Obwod();
 }
 
 double Trojkat::GetB() const {
@@ -20,7 +24,9 @@ double Trojkat::GetB() const {
 }
 
 void Trojkat::SetB(double b) {
+	sumaObwodow -= Obwod();
 	this->b = b;
+	sumaObwodow += Obwod();
 }
 
 double Trojkat::GetC() const {
@@ -28,7 +34,9 @@ double Trojkat::GetC() const {
 }
 
 void Trojkat::SetC(double c) {
+	sumaObwodow -= Obwod();
 	this->c = c;
+	sumaObwodow += Obwod();
 }
 
 double Trojkat::Obwod() {
@@ -46,4 +54,6 @@ void Trojkat::Wypisz(std::ostream& out) const {
 
 Trojkat::~Trojkat() {
 	cout << "Destruktor Trojkata(" << a << "," << b << ',' << c << ")" << endl;
+	sumaObwodow -= Obwod();
+	cout << "sumaObwodow: " << sumaObwodow << endl;
 }

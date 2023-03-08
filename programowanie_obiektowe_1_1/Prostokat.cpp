@@ -7,6 +7,8 @@ Prostokat::Prostokat(double a, double b)
 	: a(a), b(b)
 {
 	cout << "Konstruktor Prostokata(" << a << "," << b << ")" << endl;
+	sumaObwodow += Obwod();
+	cout << "sumaObwodow: " << sumaObwodow << endl;
 }
 double Prostokat::GetA() const {
 	return a;
@@ -15,10 +17,14 @@ double Prostokat::GetB() const {
 	return b;
 }
 void Prostokat::SetA(double a) {
+	sumaObwodow -= Obwod();
 	this->a = a;
+	sumaObwodow += Obwod();
 }
 void Prostokat::SetB(double b) {
+	sumaObwodow -= Obwod();
 	this->b = b;
+	sumaObwodow += Obwod();
 }
 double Prostokat::Obwod() {
 	return this->a * 2 + this->b * 2;
@@ -31,4 +37,6 @@ void Prostokat::Wypisz(std::ostream& out) const {
 }
 Prostokat::~Prostokat() {
 	cout << "Destruktor Prostokata(" << a << "," << b << ")" << endl;
+	sumaObwodow -= Obwod();
+	cout << "sumaObwodow: " << sumaObwodow << endl;
 }

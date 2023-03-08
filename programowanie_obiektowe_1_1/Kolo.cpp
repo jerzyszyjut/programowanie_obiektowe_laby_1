@@ -7,6 +7,8 @@ using namespace std;
 
 Kolo::Kolo(double r) : r(r) {
 	cout << "Konstruktor Kola(" << r << ")" << endl;
+	sumaObwodow += Obwod();
+	cout << "sumaObwodow: " << sumaObwodow << endl;
 }
 
 double Kolo::GetR() const {
@@ -14,7 +16,9 @@ double Kolo::GetR() const {
 }
 
 void Kolo::SetR(double r) {
+	sumaObwodow -= Obwod();
 	this->r = r;
+	sumaObwodow += Obwod();
 }
 
 double Kolo::Obwod() {
@@ -30,5 +34,6 @@ void Kolo::Wypisz(std::ostream& out) const {
 }
 
 Kolo::~Kolo() {
+	sumaObwodow -= Obwod();
 	cout << "Destruktor Kola(" << r << ")" << endl;
 }
